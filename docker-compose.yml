@@ -10,9 +10,15 @@
 #    docker-machine ip default
 # 6) phpVirtualBox should be available at http://<ip returned from above command>
 #
-phpvirtualbox:
-  build: .
-  ports:
-    - "80:80"
-  volumes:
-    - .:/var/www/html
+version: '3.9'
+services:
+  phpvirtualbox:
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+    deploy:
+      resources:
+        limits:
+          memory: 256M
